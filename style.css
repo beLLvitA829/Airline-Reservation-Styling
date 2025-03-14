@@ -1,0 +1,404 @@
+/* ✅ Allow the page to scroll properly */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #dfe9f3, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+    padding-top: 70px; /* Ensure content is not hidden under navbar */
+}
+
+/* ✅ Ensure the container is fully visible */
+.container {
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 90%; /* Increase width to allow more space */
+    max-width: 1200px; /* Adjust to fit more cards in a row */
+    text-align: center;
+}
+
+/* ✅ Align form elements to the left */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px; /* Limit form width */
+    margin: auto;
+}
+
+/* ✅ Style labels */
+label {
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ✅ Style Depart & Return Date labels */
+.date-label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* ✅ Ensure both Depart Date & Return Date input fields have the same width & height */
+.date-input {
+    width: 200px; /* Fixed width */
+    height: 40px; /* Fixed height */
+    padding: 8px; /* Add padding for consistency */
+    font-size: 16px; /* Ensure same font size */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: white;
+    outline: none;
+}
+
+/* ✅ Add hover effect for better UX */
+.date-input:hover {
+    border-color: #007bff;
+}
+
+/* ✅ Ensure the date input fields are aligned properly */
+.date-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ✅ Ensure buttons and input fields are spaced properly */
+input, button {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+/* ✅ Round Trip Checkbox Styling */
+.trip-type {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Adds space between checkbox and text */
+    margin-top: 10px;
+    white-space: nowrap; /* Prevents text from breaking */
+}
+
+
+.trip-type input {
+    transform: scale(1.2); /* Make checkbox bigger */
+    cursor: pointer;
+}
+
+.trip-type input[type="checkbox"] {
+    transform: translateY(2px); /* Moves checkbox down slightly */
+    width: 18px; /* Ensures proper size */
+    height: 18px;
+    cursor: pointer;
+}
+
+/* ✅ Ensure the label is aligned properly */
+.trip-type label {
+    font-size: 16px;
+    line-height: 1; /* Ensures proper vertical alignment */
+    display: inline-block;
+}
+
+/* ✅ Button styling */
+button {
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+    background-color: #0056b3;
+}
+
+/* ✅ Ensure the flight results container displays flights in a row */
+#flightResults {
+    display: flex;
+    flex-direction: column; /* Stack results vertically */
+    align-items: center; /* Center the content */
+    gap: 15px; /* Space between elements */
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* ✅ Container for Departing & Returning Flights */
+#departing-flights-container, #returning-flights-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between flight cards */
+    justify-content: center; /* Center flight cards */
+    margin-top: 15px; /* Space below section title */
+    padding: 10px;
+}
+
+/* ✅ Individual flight card */
+.flight-card {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Adjust width to make cards look neat */
+    text-align: center;
+}
+
+/* ✅ Flashing red effect for low seat availability */
+.flashing-red {
+    color: red;
+    font-weight: bold;
+    animation: flash 1s infinite;
+}
+
+@keyframes flash {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* ✅ Hide the return date container by default */
+#returnDateContainer {
+    display: none;
+}
+
+
+.reserve-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* ✅ Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Align items to the left */
+    align-items: center;
+    padding: 5px 15px;
+    background-color: #f8f9fa;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 50px;
+}
+
+/* ✅ Container for buttons */
+.nav-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+/* ✅ Navigation Buttons (Login & Sign-Up) */
+.nav-buttons .btn {
+    padding: 8px 12px;
+    font-size: 14px; /* Reduce font size */
+    border-radius: 5px;
+    min-width: 90px; /* Ensure equal button sizes */
+}
+/*
+.nav-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}*/
+
+/* ✅ Hover Effect */
+.nav-btn:hover {
+    background-color: #0056b3;
+}
+
+/* ✅ Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 5px;
+        height: 50px;
+    }
+
+    .nav-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .login-container {
+        width: 90%;
+    }
+}
+
+/* ✅ Shared Authentication Container (for Login & Signup) */
+.auth-container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 400px;
+    margin: 80px auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.auth-container:hover {
+    transform: scale(1.02);
+}
+
+
+/* ✅ Center Login Page 
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    margin: 100px auto; 
+} */
+
+
+/* ✅ Improve Input Fields */
+input {
+    width: 100% !important; /* Force all inputs to have the same width */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+
+/* ✅ Shared Styling for "Already have an account?" & "Not registered?" */
+.auth-text {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6); /* Slightly darker grey */
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Space between text and link */
+    white-space: nowrap; /* Prevents line break */
+}
+
+/* ✅ Shared Styling for Login/Signup Links */
+.auth-link {
+    color: #5cb85c; /* Soft green */
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap; /* Ensures it stays on the same line */
+}
+
+/* ✅ Hover effect */
+.auth-link:hover {
+    text-decoration: underline;
+    color: #4cae4c; /* Darker green */
+}
+
+
+
+/* ✅ General Button Styling */
+.btn {
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* ✅ Green Button (Reserve) */
+.btn-green {
+    background-color: #28a745;
+}
+
+.btn-green:hover {
+    background-color: #218838;
+}
+
+
+/* ✅ Password Container for Eye Icon */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* ✅ Password Input Field */
+.password-container input {
+    flex: 1;
+    padding-right: 40px; /* Prevents text overlap with the icon */
+    box-sizing: border-box;
+}
+
+/* ✅ Eye Icon for Toggling Password */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #007bff;
+    transition: color 0.3s ease-in-out;
+}
+
+.toggle-password:hover {
+    color: #0056b3;
+}
+
+/* ✅ Forgot Password Link Styling */
+.forgot-password {
+    display: block;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.forgot-password:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+
+
